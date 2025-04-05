@@ -1,6 +1,6 @@
 # Alexicon-UI
 
-Actualmente se cuenta con los siguientes tipos de componentes:
+Currently, the following types of components are available:
 
 ### Basic:
 
@@ -76,9 +76,9 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute         | Type               |
 |-------------------|--------------------|
-| `:val=""`         | String (opcional)  |
-| `:placeholder=""` | String (opcional)  |
-| `:disabled=""`    | Boolean (opcional) |
+| `:val=""`         | String (optional)  |
+| `:placeholder=""` | String (optional)  |
+| `:disabled=""`    | Boolean (optional) |
 
 #### TEXTAREA
 ```xml
@@ -86,11 +86,11 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute         | Type               |
 |-------------------|--------------------|
-| `:val=""`         | String (opcional)  |
-| `:placeholder=""` | String (opcional)  |
-| `:disabled=""`    | Boolean (opcional) |
-| `:standalone=""`  | Boolean (opcional) |
-| `:resize=""`      | Boolean (opcional) |
+| `:val=""`         | String (optional)  |
+| `:placeholder=""` | String (optional)  |
+| `:disabled=""`    | Boolean (optional) |
+| `:standalone=""`  | Boolean (optional) |
+| `:resize=""`      | Boolean (optional) |
 
 #### BUTTON
 ```xml
@@ -98,7 +98,7 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:disabled=""` | Boolean (opcional) |
+| `:disabled=""` | Boolean (optional) |
 
 #### RANGE
 ```xml
@@ -106,11 +106,11 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:val=""`      | Number (opcional)  |
-| `:min=""`      | Number (opcional)  |
-| `:max=""`      | Number (opcional)  |
-| `:step=""`     | Number (opcional)  |
-| `:disabled=""` | Boolean (opcional) |
+| `:val=""`      | Number (optional)  |
+| `:min=""`      | Number (optional)  |
+| `:max=""`      | Number (optional)  |
+| `:step=""`     | Number (optional)  |
+| `:disabled=""` | Boolean (optional) |
 
 #### CHECKBOX
 ```xml
@@ -118,8 +118,8 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:checked=""`  | Boolean (opcional) |
-| `:disabled=""` | Boolean (opcional) |
+| `:checked=""`  | Boolean (optional) |
+| `:disabled=""` | Boolean (optional) |
 
 #### SWITCH
 ```xml
@@ -127,8 +127,8 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:checked=""`  | Boolean (opcional) |
-| `:disabled=""` | Boolean (opcional) |
+| `:checked=""`  | Boolean (optional) |
+| `:disabled=""` | Boolean (optional) |
         
 #### RADIO
 ```xml
@@ -136,8 +136,8 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:checked=""`  | Boolean (opcional) |
-| `:disabled=""` | Boolean (opcional) |
+| `:checked=""`  | Boolean (optional) |
+| `:disabled=""` | Boolean (optional) |
 
 #### COLOR
 ```xml
@@ -145,8 +145,8 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute        | Type               |
 |------------------|--------------------|
-| `:val=""`        | String (opcional)  |
-| `:standalone=""` | Boolean (opcional) |
+| `:val=""`        | String (optional)  |
+| `:standalone=""` | Boolean (optional) |
 
 #### KNOB
 ```xml
@@ -154,9 +154,9 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:val=""`      | Number (opcional)  |
-| `:step=""`     | Number (opcional)  |
-| `:disabled=""` | Boolean (opcional) |
+| `:val=""`      | Number (optional)  |
+| `:step=""`     | Number (optional)  |
+| `:disabled=""` | Boolean (optional) |
 
 #### MICRO KNOB
 ```xml
@@ -164,9 +164,9 @@ Below are the characteristics of each one for each component type:
 ```
 | Attribute      | Type               |
 |----------------|--------------------|
-| `:val=""`      | Number (opcional)  |
-| `:step=""`     | Number (opcional)  |
-| `:disabled=""` | Boolean (opcional) |
+| `:val=""`      | Number (optional)  |
+| `:step=""`     | Number (optional)  |
+| `:disabled=""` | Boolean (optional) |
 
 #### VIDEO
 ```xml
@@ -175,10 +175,10 @@ Below are the characteristics of each one for each component type:
 | Attribute       | Type               |
 |-----------------|--------------------|
 | `:src=""`       | String             |
-| `:autoplay=""`  | Boolean (opcional) |
-| `:loop=""`      | Boolean (opcional) |
-| `:framerate=""` | Number (opcional)  |
-| `:subtitles=""` | String (opcional)  |
+| `:autoplay=""`  | Boolean (optional) |
+| `:loop=""`      | Boolean (optional) |
+| `:framerate=""` | Number (optional)  |
+| `:subtitles=""` | String (optional)  |
 
 #### AUDIO
 ```xml
@@ -187,8 +187,8 @@ Below are the characteristics of each one for each component type:
 | Attribute      | Type               |
 |----------------|--------------------|
 | `:src=""`      | String             |
-| `:autoplay=""` | Boolean (opcional) |
-| `:loop=""`     | Boolean (opcional) |
+| `:autoplay=""` | Boolean (optional) |
+| `:loop=""`     | Boolean (optional) |
 
 #### CODE
 ```xml
@@ -237,9 +237,9 @@ _No attributes_.
 ```
 | Attribute         | Type               |
 |-------------------|--------------------|
-| `:val=""`         | String (opcional)  |
-| `:placeholder=""` | String (opcional)  |
-| `:disabled=""`    | Boolean (opcional) |
+| `:val=""`         | String (optional)  |
+| `:placeholder=""` | String (optional)  |
+| `:disabled=""`    | Boolean (optional) |
 | `"bgcolor=""`     | Array (optional)   |
 
 # Get data
