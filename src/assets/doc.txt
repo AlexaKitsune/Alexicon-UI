@@ -1,0 +1,102 @@
+Actualmente se cuenta con los siguientes tipos de componentes:
+    text, button, range, checkbox, radio, color, knob, video, audio.
+
+Estos pueden ser invocados importando el componente AlexiconInput y especificando el tipo:
+    <AlexiconInput :type="'text'"/>
+    <AlexiconInput :type="'button'"></AlexiconInput>
+    <AlexiconInput :type="'range'"/>
+    <AlexiconInput :type="'checkbox'"/>
+    <AlexiconInput :type="'radio'"/>
+    <AlexiconInput :type="'color'"/>
+    <AlexiconInput :type="'knob'"/>
+    <AlexiconInput :type="'audio'"/>
+    <AlexiconInput :type="'video'"/>
+
+Note cómo el componente button tiene etiqueta de apertura y también de cierre.
+Esto permite colocar contenido dentro como un <button></button> normal.
+
+Cada uno cuenta con distintos atributos, algunos opcionales y algunos obligatorios.
+A continuación se muestran as características de cada uno de estos para cada tipo de componente:
+
+    TEXT
+        <AlexiconInput :type="'text'"
+            :val=""                     String (opcional)
+            :placeholder=""             String (opcional)
+            :disabled=""                Boolean (opcional)
+        />
+
+    BUTTON
+        <AlexiconInput :type="'button'"
+            :disabled=""                Boolean (opcional)
+        ></AlexiconInput>
+
+    RANGE
+        <AlexiconInput :type="'range'"
+            :val=""                     Number (opcional)
+            :step=""                    Number (opcional)
+            :min=""                     Number (opcional)
+            :max=""                     Number (opcional)
+            :disabled=""                Boolean (opcional)
+        />
+
+    CHECKBOX
+        <AlexiconInput :type="'checkbox'"
+            :checked=""                 Boolean (opcional)
+            :disabled=""                Boolean (opcional)
+        />
+        
+    RADIO
+        <AlexiconInput :type="'radio'"
+            :checked=""                 Boolean (opcional)
+            :disabled=""                Boolean (opcional)
+        />
+
+    COLOR
+        <AlexiconInput :type="'color'"
+            :val=""                     String (opcional)
+        />
+
+    KNOB
+        <AlexiconInput :type="'knob'"
+            :val=""                     Number (opcional)
+            :step=""                    Number (opcional)
+            :disabled=""                Boolean (opcional)
+        />
+
+    VIDEO
+        <AlexiconInput :type="'video'"
+            :src=""                     String
+            :autoplay=""                Boolean (opcional)
+            :loop=""                    Boolean (opcional)
+            :framerate=""               Number (opcional)
+            :subtitles=""               String (opcional)
+        />
+
+    AUDIO
+        <AlexiconInput :type="'audio'"
+            :src=""                     String
+            :autoplay=""                Boolean (opcional)
+            :loop=""                    Boolean (opcional)
+        />
+
+La captura de datos se realiza a través del evento @get-value="",
+el cual se ejecuta ante cualquier cambio de valor en los inputs (no aplica para button, video, audio).
+    
+    Por ejemplo:
+
+        <AlexiconInput :type="'text'"
+            :placeholder="'hola'"
+            :val="'hola'"
+            @get-val="(val) => myFunction(val, 'txtexample')"
+        />
+
+    Donde myFunction puede ser cualquier función personalizada / elaborada por nosotros. En este ejemplo, la haremos así:
+
+        myFunction(val, orig){
+            console.log("getting value:", val, orig);
+        },
+
+    Al ejecutarse, se imprimirá en consola:
+
+        getting value: hola txtexample
+
