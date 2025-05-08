@@ -1,20 +1,20 @@
 <template>
-    <main class="AlexiconUniversalLoginRegister-MAIN">
+    <main class="AlexiconUniversalLoginRegister-MAIN" :style="bgImg ? `background-image: url('${bgImg}')`: ''">
 
         <section>
-            <h1 v-if="mode == 'register'">Create an Alexicon Account to access {{ serviceName }}</h1>
+            <h1 v-if="mode == 'register'">Create an Alexicon Account to access <span :style="txtColor ? `color: ${txtColor} !important;`: ''">{{ serviceName }}</span></h1>
             <h1 v-if="mode == 'login'">Login into {{ serviceName }} with your Alexicon Account</h1>
 
             <div>
                 <div v-if="step == 0">
-                    <div><input type="text" placeholder="Email"></div>
-                    <div><input type="text" placeholder="Password"></div>
+                    <div><input type="text" placeholder="Email" v-model="email"></div>
+                    <div><input type="password" placeholder="Password" v-model="password"></div>
                 </div>
                 <div v-if="mode == 'register' && step == 1">
-                    <div><input type="text" placeholder="First name"></div>
-                    <div><input type="text" placeholder="Last name"></div>
-                    <div><input type="text" placeholder="Nickname"></div>
-                    <div><input :type="inputType" placeholder="Birthday" @focus="inputType = 'date'" @blur="inputType = 'text'"></div>
+                    <div><input type="text" placeholder="First name" v-model="firstName"></div>
+                    <div><input type="text" placeholder="Last name" v-model="lastName"></div>
+                    <div><input type="text" placeholder="Nickname" v-model="nickName"></div>
+                    <div><input :type="inputType" placeholder="Birthday" @focus="inputType = 'date'" @blur="inputType = 'text'" v-model="birthday"></div>
                     <div class="AlexiconUniversalLoginRegister-genders">
                         <label @click.stop="manageGenderInput('male')">&nbsp;Male<AlexiconRadio style="pointer-events:none;" :styles="styles" :checked="genderInput.male" :key="genderInput.key"/></label>
                         <label @click.stop="manageGenderInput('female')">&nbsp;Female<AlexiconRadio style="pointer-events:none;" :styles="styles" :checked="genderInput.female" :key="genderInput.key"/></label>
@@ -26,12 +26,13 @@
             </div>
 
             <div>
-                <p class="Alexico" v-if="mode == 'register'" @click="mode = 'login', step = 0">Already have an account? Login</p>
-                <p class="Alexico" v-if="mode == 'login'" @click="mode = 'register', step = 0">Don't have an account? Register</p>
+                <p v-if="mode == 'register'" @click="mode = 'login', step = 0">Already have an account? Login</p>
+                <p v-if="mode == 'login'" @click="mode = 'register', step = 0">Don't have an account? Register</p>
                 <div>
                     <button class="Alexicon-icon-btn" v-if="step == 1" @click="step = 0"><MoveLeft/></button>
                     <AlexiconButton :styles="modifiedBtnStyles" v-if="step == 0 && mode == 'register' && modifiedBtnStyles" @click="step = 1">Continue</AlexiconButton>
-                    <AlexiconButton :styles="styles" v-if="step == 1 || mode == 'login'">Create account</AlexiconButton>
+                    <AlexiconButton :styles="styles" v-if="step == 1 && mode == 'register'" @click="register()">Create account</AlexiconButton>
+                    <AlexiconButton :styles="styles" v-if="mode == 'login'" @click="login()">Login</AlexiconButton>
                 </div>
             </div>
         </section>
@@ -56,6 +57,8 @@ export default {
         bg: String,
         serviceName: String,
         apiBaseNameUrl: String,
+        txtColor: String,
+        bgImg: String,
     },
     data(){
         return{
@@ -63,6 +66,12 @@ export default {
             step: 0,
             inputType: 'text',
             modifiedBtnStyles: false,
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            nickName: '',
+            birthday: '',
             genderInput: {
                 male: false,
                 female: false,
@@ -84,7 +93,59 @@ export default {
             this.genderInput[option_] = true;
             this.genderInput.val = option_ == 'other' ? '' : option_;
             this.genderInput.key++;
-            console.log("val", this.genderInput.val)
+        },
+
+        login(){
+            const access = {
+                access_word: this.email,
+                password: this.password,
+            }
+
+            fetch(this.$ENDPOINT+"/alexicon/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(access)
+            })
+            .then( data => data.json() )
+            .then( data => {
+                console.log(data)
+                if(data.response == "Correct login."){
+                    localStorage.setItem("AlexiconUserData", JSON.stringify({
+                        sessionActive: true,
+                        userData: data.user_data,
+                        token: data.access_token
+                    }));
+                    this.$emit('activate-session', true);
+                }
+            })
+        },
+
+        register(){
+            const userData = {
+                email: this.email,
+                password: this.password,
+                name: this.firstName,
+                surname: this.lastName,
+                nickname: this.nickName,
+                birthday: this.birthday,
+                gender: this.genderInput.val
+            };
+
+            fetch(this.$ENDPOINT+"/alexicon/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+            .then( data => {
+                console.log(data);
+                if(data.response == "User added successfully."){
+                    this.login();
+                }
+            })
         }
 
     },
@@ -93,19 +154,25 @@ export default {
         this.modifiedBtnStyles.light.button.default.bg = "black";
         this.modifiedBtnStyles.dark.button.default.bg = "white";
         this.modifiedBtnStyles.dark.button.default.txt = "black";
+
+        const alexiconUserData = JSON.parse(localStorage.getItem("AlexiconUserData"));
+        if(alexiconUserData){
+            this.$emit('activate-session', true);
+        }
     }
 }
 </script>
 
 <style scoped>
 .AlexiconUniversalLoginRegister-MAIN{
-    border: 1px solid red;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-position: center;
+    background-size: cover;
 }
 
 .AlexiconUniversalLoginRegister-MAIN > section{
@@ -130,6 +197,7 @@ export default {
 .AlexiconUniversalLoginRegister-MAIN input{
     margin-bottom: 0.75ch;
     width: 30ch;
+    min-width: 30ch;
 }
 
 .AlexiconUniversalLoginRegister-MAIN section > div:nth-child(2) > div{

@@ -10,7 +10,7 @@
 export default {
     name: 'AlexiconMainpage',
     props:{
-
+        highlightBtnColor: String,
     },
     data(){
         return{
@@ -39,6 +39,18 @@ export default {
 .AlexiconMainpage-MAIN:deep(.Alexicon-main){
     height: fit-content;
     overflow-y: auto;
-    width: 100%;
+    width: 1440px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.AlexiconMainpage-MAIN:deep(.Alexicon-main .highlighted-btn){
+    color: white;
+    background-color: v-bind('highlightBtnColor');
+}
+
+.AlexiconMainpage-MAIN:deep(.Alexicon-main .highlighted-btn:disabled){
+    opacity: 0.5 !important;
+    cursor: unset;
 }
 </style>

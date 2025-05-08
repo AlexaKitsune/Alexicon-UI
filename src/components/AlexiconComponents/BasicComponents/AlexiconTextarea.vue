@@ -1,7 +1,7 @@
 <template>
     <div class="AlexiconTextarea-MAIN">
         <div v-if="!standalone" class="AlexiconTextarea-switch">
-            <AlexiconSwitch :styles="styles" @get-val="(val) => switchTextareaPreview(val)"/> Preview
+            <AlexiconSwitch :styles="styles" @get-val="(val) => switchTextareaPreview(val)"/>&nbsp;Preview
         </div>
         <textarea
             v-if="!previewActive"
@@ -10,6 +10,7 @@
             :disabled="disabled"
             v-model="currentVal" @input="emitValue" @change="emitValue"
             :style="resize ? 'resize: vertical;' : ''"
+            :maxlength="maxlength"
         >
         </textarea>
         <AlexiconMarkdown v-if="previewActive" :val="currentVal" :key="keyUpdater"/>
@@ -33,6 +34,7 @@ export default {
         disabled: Boolean,
         standalone: Boolean,
         resize: Boolean,
+        maxlength: Number,
     },
     data(){
         return{

@@ -15,12 +15,12 @@
     <AlexiconMarkdown v-if="type=='markdown'" :val="val"/>
     <AlexiconWindow v-if="type=='window'" :styles="styles" :title="title" :initialPosition="initialPosition"><slot></slot></AlexiconWindow>
     <AlexiconDoc v-if="type=='doc'" :styles="styles" :src="src"/>
-    <AlexiconTextarea v-if="type == 'textarea'" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" :standalone="standalone" :resize="resize" @get-val="updateValue"/>
+    <AlexiconTextarea v-if="type == 'textarea'" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" :standalone="standalone" :resize="resize" :maxlength="maxlength" @get-val="updateValue"/>
     <!--Advanced components-->
-    <AlexiconMainpage v-if="type == 'mainpage'"><slot></slot></AlexiconMainpage>
+    <AlexiconMainpage v-if="type == 'mainpage'" :highlightBtnColor="highlightBtnColor"><slot></slot></AlexiconMainpage>
     <AlexiconSearchbar v-if="type == 'searchbar'" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" :bgcolor="bgcolor" @get-switch-menu="(val) => updateSpecificValue(val, 'get-switch-menu')"><slot></slot></AlexiconSearchbar>
     <AlexiconAsidemenu v-if="type == 'asidemenu'" :active="active" :size="size"><slot></slot></AlexiconAsidemenu>
-    <AlexiconUniversalLoginRegister v-if="type == 'universalloginregister'" :styles="styles"/>
+    <AlexiconUniversalLoginRegister v-if="type == 'universalloginregister'" :styles="styles" :serviceName="serviceName" :txtColor="txtColor" :bgImg="bgImg" @activate-session="updateValue"/>
 </template>
 
 <script>
@@ -89,11 +89,16 @@ export default {
         initialPosition: Array,
         doc: String,
         standalone: Boolean,
+        maxlength: Number,
         //Advanced props:
         bgcolor: Array,
         active: Boolean,
         size: undefined,
         resize: Boolean,
+        serviceName: String,
+        txtColor: String,
+        bgImg: String,
+        highlightBtnColor: String,
     },
     data(){
         const purple = '#7700ff';
@@ -361,7 +366,7 @@ export default {
         },
 
         updateSpecificValue(value, customEvent){
-            console.log("actualizando specific value", customEvent, value)
+            //console.log("actualizando specific value", customEvent, value)
             this.$emit(customEvent, value);
         },
 
