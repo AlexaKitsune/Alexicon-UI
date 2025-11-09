@@ -367,188 +367,169 @@ export default {
 }
 </script>
 
-<style scoped>
-.Alexicon-ColorPicker-MAIN{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    z-index: 3;
-}
+<style scoped lang="stylus">
+.Alexicon-ColorPicker-MAIN
+    width: 100%
+    height: 100vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    background-color: rgba(0, 0, 0, 0.5)
+    position: fixed
+    top: 0
+    z-index: 3
 
-.Alexicon-ColorPicker-standalone-true{
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    background-color: transparent;
-    z-index: unset;
-}
+    >div
+        display: flex;
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        background-color: light-dark(v-bind('styles.light.color.bg'), v-bind('styles.dark.color.bg'))
+        border-radius: 10px
+        padding: 10px
 
-.Alexicon-ColorPicker-MAIN > div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: light-dark(v-bind('styles.light.color.bg'), v-bind('styles.dark.color.bg'));
-    border-radius: 10px;
-    padding: 10px;
-}
+        >div:nth-child(2)
+            width: 150px
+            aspect-ratio: 1/1
+            position: relative
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            margin-bottom: 5px
 
-.Alexicon-ColorPicker-standalone-true > div{
-    width: fit-content;
-    height: fit-content;
-    background-color: transparent;
-}
+.Alexicon-ColorPicker-standalone-true
+    width: fit-content
+    height: fit-content
+    position: relative
+    background-color: transparent
+    z-index: unset
 
-.Alexicon-ColorPicker-MAIN > div > div:nth-child(2){
-    width: 150px;
-    aspect-ratio: 1/1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5px;
-}
+    >div
+        width: fit-content
+        height: fit-content
+        background-color: transparent
 
-.Alexicon-color-reflex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 10px;
-}
+.Alexicon-color-reflex
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    margin-bottom: 10px
 
-.Alexicon-color-reflex > *{
-    margin: 0;
-    min-width: 10ch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+    >*
+        margin: 0
+        min-width: 10ch
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
 
 /* color selectors */
-.Alexicon-color-circle, .Alexicon-color-square{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+.Alexicon-color-circle
+.Alexicon-color-square
+    position: absolute
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
 
-.Alexicon-color-circle{
-    z-index: 1;
-    border-radius: 100vw;
-    background: conic-gradient(from 110deg, red, magenta, blue, cyan, green, yellow, orange, red);
-}
+.Alexicon-color-circle
+    z-index: 1
+    border-radius: 100vw
+    background: conic-gradient(from 110deg, red, magenta, blue, cyan, green, yellow, orange, red)
 
-.Alexicon-color-circle > div:nth-child(1){
-    border-radius: 100vw;
-    background-color: light-dark(v-bind('styles.light.color.bg'), v-bind('styles.dark.color.bg'));
-    width: 75%;
-    aspect-ratio: 1/1;
-    position: absolute;
-    z-index: 2;
-}
+    >div:nth-child(1)
+        border-radius: 100vw
+        background-color: light-dark(v-bind('styles.light.color.bg'), v-bind('styles.dark.color.bg'))
+        width: 75%
+        aspect-ratio: 1/1
+        position: absolute
+        z-index: 2
 
-.Alexicon-color-circle > div:nth-child(2){
-    width: 100%;
-    aspect-ratio: 1/1;
-    position: absolute;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    cursor:move;
-}
+    >div:nth-child(2)
+        width: 100%
+        aspect-ratio: 1/1
+        position: absolute
+        z-index: 1
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        cursor:move
 
-.Alexicon-color-circle > div:nth-child(2) > div{
-    height: 5px;
-    min-width: 5px;
-    width: 9%;
-    margin-right: 1%;
-    backdrop-filter: invert(100%);
-    border-radius: 100vw;
-    border: 2px solid v-bind('styles.light.color.border');
-}
+        >div
+            height: 5px
+            min-width: 5px
+            width: 9%
+            margin-right: 1%
+            backdrop-filter: invert(100%)
+            border-radius: 100vw
+            border: 2px solid v-bind('styles.light.color.border')
 
-.Alexicon-color-square{
-    z-index: 2;
-    width: 52%;
-    height: 52%;
-    aspect-ratio: 1/1;
-    position: relative;
-    cursor: crosshair;
-}
+.Alexicon-color-square
+    z-index: 2
+    width: 52%
+    height: 52%
+    aspect-ratio: 1/1
+    position: relative
+    cursor: crosshair
 
-.Alexicon-color-square > div:nth-child(1){
-    width: 10px;
-    aspect-ratio: 1/1;
-    border-radius: 100vw;
-    border: 2px solid v-bind('styles.light.color.border');
-    position: absolute;
-    transform-origin: center;
-    transform: translateX(-5px) translateY(-5px);
-}
+    >div:nth-child(1)
+        width: 10px
+        aspect-ratio: 1/1
+        border-radius: 100vw
+        border: 2px solid v-bind('styles.light.color.border')
+        position: absolute
+        transform-origin: center
+        transform: translateX(-5px) translateY(-5px)
 /* end color selectors */
 
-.Alexicon-hsl, .Alexicon-rgb, .Alexicon-hex{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px 0;
-}
+.Alexicon-hsl
+.Alexicon-rgb
+.Alexicon-hex
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 5px 0
 
-.Alexicon-hsl label, .Alexicon-rgb label, .Alexicon-hex label{
-    width: 33.3%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-}
+    label
+        width: 33.3%
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-left: 10px
 
-.Alexicon-hsl > label:nth-child(1),
-.Alexicon-rgb > label:nth-child(1),
-.Alexicon-hex > label:nth-child(1){
-    margin: 0;
-}
+        &:nth-child(1)
+        &:nth-child(1)
+        &:nth-child(1)
+            margin: 0;
 
-.Alexicon-hsl input, .Alexicon-rgb input, .Alexicon-hex input{
-    width: 8ch;
-    margin-left: 10px;
-}
+    input
+        width: 8ch
+        margin-left: 10px
 
-.Alexicon-hex{
-    margin-bottom: 10px;
-}
+.Alexicon-hex
+    margin-bottom: 10px
 
 /* button */
-button{
-    border-radius: 100vw;
-    border: none;
-    color: v-bind('styles.light.button.default.txt');
-    background-color: v-bind('styles.light.button.default.bg');
-    padding: 3px;
-    min-width: 50px;
-    width: 100%;
-}
+button
+    border-radius: 100vw
+    border: none
+    color: v-bind('styles.light.button.default.txt')
+    background-color: v-bind('styles.light.button.default.bg')
+    padding: 3px
+    min-width: 50px
+    width: 100%
 
-button:hover{
-    cursor: pointer;
-}
+    &hover
+        cursor: pointer
 
-button:disabled{
-    color: v-bind('styles.light.button.disabled.txt');
-    background-color: v-bind('styles.light.button.disabled.bg');
-    cursor: unset;
-}
+    &:disabled
+        color: v-bind('styles.light.button.disabled.txt')
+        background-color: v-bind('styles.light.button.disabled.bg')
+        cursor: unset
 </style>

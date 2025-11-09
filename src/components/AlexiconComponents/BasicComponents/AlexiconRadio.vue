@@ -37,44 +37,39 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconRadio-MAIN{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    aspect-ratio: 1/1;
-    border-radius: 100vw;
-    background-color: light-dark(v-bind('styles.light.radio.default.bg'), v-bind('styles.dark.radio.default.bg'));
-    cursor: pointer;
-}
+<style scoped lang="stylus">
+.AlexiconRadio-MAIN
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 20px
+    aspect-ratio: 1/1
+    border-radius: 100vw
+    background-color: light-dark(v-bind('styles.light.radio.default.bg'), v-bind('styles.dark.radio.default.bg'))
+    cursor: pointer
 
-.AlexiconRadio-MAIN input{
-    opacity: 0.3;
-    display: none;
-}
-
-.AlexiconRadio-MAIN > div{
-    width: calc(100% - 9px);
-    aspect-ratio: 1/1;
-    border-radius: 100vw;
-    display: none;
-}
-
-.AlexiconRadio-checked-{
+    input
+        opacity: 0.3
+        display: none
+    
+    >div
+        width: calc(100% - 9px)
+        aspect-ratio: 1/1
+        border-radius: 100vw
+        display: none
+    
+.AlexiconRadio-checked-
     display: flex !important;
-    background-color: light-dark(v-bind('styles.light.radio.checked.check'), v-bind('styles.dark.radio.checked.check'));
-}
+    background-color: light-dark(v-bind('styles.light.radio.checked.check'), v-bind('styles.dark.radio.checked.check'))
 
-.AlexiconRadio--disabled{
+.AlexiconRadio--disabled
     display: flex !important;
     background-color: transparent;
-    border: 2px solid light-dark(v-bind('styles.light.radio.disabled.check'), v-bind('styles.dark.radio.disabled.check'));
+    border: 2px solid light-dark(v-bind('styles.light.radio.disabled.check'), v-bind('styles.dark.radio.disabled.check'))
     clip-path: unset !important;
-}
 
-.AlexiconRadio-checked-disabled{
+.AlexiconRadio-checked-disabled
     display: flex !important;
-    background-color: light-dark(v-bind('styles.light.radio.checkedDisabled.check'), v-bind('styles.dark.radio.checkedDisabled.check'));
-}
+    background-color: light-dark(v-bind('styles.light.radio.checkedDisabled.check'), v-bind('styles.dark.radio.checkedDisabled.check'))
+
 </style>

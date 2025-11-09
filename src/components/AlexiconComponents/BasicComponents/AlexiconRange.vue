@@ -58,56 +58,49 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconRange-MAIN{
+<style scoped lang="stylus">
+.AlexiconRange-MAIN
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 25px;
-}
 
-.AlexiconRange-steps{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
+    input
+        -webkit-appearance: none
+        appearance: none
+        background: light-dark(v-bind('styles.light.range.default.bg'), v-bind('styles.dark.range.default.bg'))
+        height: 5px
+        border-radius: 100vw
+        width: 100%
+        z-index: 0
 
-.AlexiconRange-step{
-    width: 2px;
-    height: 6px;
-    background-color: light-dark(v-bind('styles.light.range.default.step'), v-bind('styles.dark.range.default.step'));
-}
+        &::-webkit-slider-thumb
+            -webkit-appearance: none
+            appearance: none
+            width: 10px
+            height: 25px
+            background: light-dark(v-bind('styles.light.range.default.thumb'), v-bind('styles.dark.range.default.thumb'))
+            border: none
+        
+        &::-moz-range-thumb 
+            width: 10px
+            height: 25px
+            background: light-dark(v-bind('styles.light.range.default.thumb'), v-bind('styles.dark.range.default.thumb'))
+            border: none
+        
+        &:disabled::-webkit-slider-thumb
+        &:disabled::-moz-range-thumb
+            background: light-dark(v-bind('styles.light.range.disabled.thumb'), v-bind('styles.dark.range.disabled.thumb'))
 
-.AlexiconRange-MAIN input{
-    -webkit-appearance: none;
-    appearance: none;
-    background: light-dark(v-bind('styles.light.range.default.bg'), v-bind('styles.dark.range.default.bg'));
-    height: 5px;
-    border-radius: 100vw;
-    width: 100%;
-    z-index: 0;
-}
+.AlexiconRange-steps
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
 
-.AlexiconRange-MAIN input::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    appearance: none;
-    width: 10px;
-    height: 25px;
-    background: light-dark(v-bind('styles.light.range.default.thumb'), v-bind('styles.dark.range.default.thumb'));
-    border: none;
-}
-
-.AlexiconRange-MAIN input::-moz-range-thumb {
-    width: 10px;
-    height: 25px;
-    background: light-dark(v-bind('styles.light.range.default.thumb'), v-bind('styles.dark.range.default.thumb'));
-    border: none;
-}
-
-.AlexiconRange-MAIN input:disabled::-webkit-slider-thumb,
-.AlexiconRange-MAIN input:disabled::-moz-range-thumb{
-    background: light-dark(v-bind('styles.light.range.disabled.thumb'), v-bind('styles.dark.range.disabled.thumb'));
-}
+.AlexiconRange-step
+    width: 2px
+    height: 6px
+    background-color: light-dark(v-bind('styles.light.range.default.step'), v-bind('styles.dark.range.default.step'))
 </style>

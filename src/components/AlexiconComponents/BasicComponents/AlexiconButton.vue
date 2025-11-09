@@ -17,23 +17,20 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconButton-MAIN{
-    border-radius: 100vw;
-    border: none;
-    color: light-dark(v-bind('styles.light.button.default.txt'), v-bind('styles.dark.button.default.txt'));
-    background-color: light-dark(v-bind('styles.light.button.default.bg'), v-bind('styles.dark.button.default.bg'));
-    min-width: 50px;
-    padding: 3px calc(1ch + 3px);
-}
+<style scoped lang="stylus">
+.AlexiconButton-MAIN
+    border-radius: 100vw
+    border: none
+    color: light-dark(v-bind('styles.light.button.default.txt'), v-bind('styles.dark.button.default.txt'))
+    background-color: light-dark(v-bind('styles.light.button.default.bg'), v-bind('styles.dark.button.default.bg'))
+    min-width: 50px
+    padding: 3px calc(1ch + 3px)
 
-.AlexiconButton-MAIN:hover{
-    cursor: pointer;
-}
+    &:hover
+        cursor: pointer
 
-.AlexiconButton-MAIN:disabled{
-    color: light-dark(v-bind('styles.light.button.disabled.txt'), v-bind('styles.dark.button.disabled.txt'));
-    background-color: light-dark(v-bind('styles.light.button.disabled.bg'), v-bind('styles.dark.button.disabled.bg'));
-    cursor: unset;
-}
+    &:disabled
+        color: light-dark(v-bind('styles.light.button.disabled.txt'), v-bind('styles.dark.button.disabled.txt'))
+        background-color: light-dark(v-bind('styles.light.button.disabled.bg'), v-bind('styles.dark.button.disabled.bg'))
+        cursor: unset
 </style>

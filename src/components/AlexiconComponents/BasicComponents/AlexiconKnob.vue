@@ -137,30 +137,25 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconKnob-MAIN{
-}
+<style scoped lang="stylus">
+.AlexiconKnob-MAIN > div
+    width: 100%
+    aspect-ratio: 1/1
+    border-radius: 100vw
+    background-color: light-dark(v-bind('styles.light.knob.default.bg'), v-bind('styles.dark.knob.default.bg'))
+    display: flex
+    flex-direction: column
+    align-items: center
+        
+    >div{
+        width: 10px
+        height: 25%
+        min-height: 10px
+        background: light-dark( v-bind('styles.light.knob.default.thumb'), v-bind('styles.dark.knob.default.thumb'))
+        border-radius: 100vw
+        margin-top: 5px
+    }
 
-.AlexiconKnob-MAIN > div{
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 100vw;
-    background-color: light-dark(v-bind('styles.light.knob.default.bg'), v-bind('styles.dark.knob.default.bg'));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.AlexiconKnob-MAIN > div > div{
-    width: 10px;
-    height: 25%;
-    min-height: 10px;
-    background: light-dark( v-bind('styles.light.knob.default.thumb'), v-bind('styles.dark.knob.default.thumb'));
-    border-radius: 100vw;
-    margin-top: 5px;
-}
-
-.AlexiconKnob-d-true > div{
-    background: light-dark(v-bind('styles.light.knob.disabled.thumb'), v-bind('styles.dark.knob.disabled.thumb')) !important;
-}
+.AlexiconKnob-d-true > div
+    background: light-dark(v-bind('styles.light.knob.disabled.thumb'), v-bind('styles.dark.knob.disabled.thumb')) !important
 </style>

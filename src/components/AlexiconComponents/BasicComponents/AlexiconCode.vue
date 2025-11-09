@@ -45,17 +45,15 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconCode-MAIN{
-    background-color: rgb(26, 27, 38);
-    color: rgb(154, 165, 206);
-    font-size: 1.5ch;
-    padding: 1ch;
-}
+<style scoped lang="stylus">
+.AlexiconCode-MAIN
+    background-color: rgb(26, 27, 38)
+    color: rgb(154, 165, 206)
+    font-size: 1.5ch
+    padding: 1ch
 
-.AlexiconCode-MAIN pre{
-    margin: 0;
-    max-width: 100%;
-    overflow-y: auto;
-}
+    pre
+        margin: 0
+        max-width: 100%
+        overflow-y: auto
 </style>

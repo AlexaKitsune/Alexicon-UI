@@ -37,43 +37,37 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconCheckbox-MAIN{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    aspect-ratio: 1/1;
-    background-color: light-dark(v-bind('styles.light.checkbox.default.bg'), v-bind('styles.dark.checkbox.default.bg'));
-    cursor: pointer;
-}
+<style scoped lang="stylus">
+.AlexiconCheckbox-MAIN
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 20px
+    aspect-ratio: 1/1
+    background-color: light-dark(v-bind('styles.light.checkbox.default.bg'), v-bind('styles.dark.checkbox.default.bg'))
+    cursor: pointer
 
-.AlexiconCheckbox-MAIN input{
-    opacity: 0.3;
-    display: none;
-}
+    input
+        opacity: 0.3
+        display: none
 
-.AlexiconCheckbox-MAIN > div{
-    width: calc(100% - 8px);
-    aspect-ratio: 1/1;
-    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-    display: none;
-}
+    >div
+        width: calc(100% - 8px)
+        aspect-ratio: 1/1
+        clip-path: polygon(100% 0%, 100% 100%, 0% 100%)
+        display: none
 
-.AlexiconCheckbox-checked-{
-    display: flex !important;
-    background-color: light-dark(v-bind('styles.light.checkbox.checked.check'), v-bind('styles.dark.checkbox.checked.check'));
-}
+.AlexiconCheckbox-checked-
+    display: flex !important
+    background-color: light-dark(v-bind('styles.light.checkbox.checked.check'), v-bind('styles.dark.checkbox.checked.check'))
 
-.AlexiconCheckbox--disabled{
-    display: flex !important;
-    background-color: transparent;
-    border: 2px solid light-dark(v-bind('styles.light.checkbox.disabled.check'), v-bind('styles.dark.checkbox.disabled.check'));
-    clip-path: unset !important;
-}
+.AlexiconCheckbox--disabled
+    display: flex !important
+    background-color: transparent
+    border: 2px solid light-dark(v-bind('styles.light.checkbox.disabled.check'), v-bind('styles.dark.checkbox.disabled.check'))
+    clip-path: unset !important
 
-.AlexiconCheckbox-checked-disabled{
-    display: flex !important;
-    background-color: light-dark(v-bind('styles.light.checkbox.checkedDisabled.check'), v-bind('styles.dark.checkbox.checkedDisabled.check'));
-}
+.AlexiconCheckbox-checked-disabled
+    display: flex !important
+    background-color: light-dark(v-bind('styles.light.checkbox.checkedDisabled.check'), v-bind('styles.dark.checkbox.checkedDisabled.check'))
 </style>

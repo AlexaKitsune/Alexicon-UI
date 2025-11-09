@@ -68,25 +68,21 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconColor-MAIN{
-    width: fit-content;
-}
+<style scoped lang="stylus">
+.AlexiconColor-MAIN
+    width: fit-content
 
-.AlexiconColor-MAIN input[type=color]{
-    display: none;
-    pointer-events: none;
-}
+    input[type=color]
+        display: none
+        pointer-events: none
 
-.AlexiconColor-show{
-    height: 20px;
-    width: 20px;
-    border-radius: 0 100vw 100vw 100vw;
-    rotate: 45deg;
-    margin-top: 4px;
-}
+.AlexiconColor-show
+    height: 20px
+    width: 20px
+    border-radius: 0 100vw 100vw 100vw
+    rotate: 45deg
+    margin-top: 4px
 
-.AlexiconColor-show:hover{
-    cursor: crosshair;
-}
+    &:hover
+        cursor: crosshair
 </style>

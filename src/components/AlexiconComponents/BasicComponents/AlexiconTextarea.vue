@@ -76,31 +76,28 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconTextarea-MAIN{
-    width: 100%;
-    height: 100%;
-}
+<style scoped lang="stylus">
+.AlexiconTextarea-MAIN
+    width: 100%
+    height: 100%
 
-.AlexiconTextarea-switch{
-    display: flex;
-    align-items: center;
-    height: 30px;
-    width: fit-content;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
+    .AlexiconTextarea-switch
+        display: flex
+        align-items: center
+        height: 30px
+        width: fit-content
+        cursor: pointer
+        margin-bottom: 5px
 
-.AlexiconTextarea-MAIN textarea{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    height: calc(100% - 30px);
-    border: none;
-    border-radius: 10px;
-    resize: none;
-    font-size: 1.5ch;
-    border: 2px solid light-dark(v-bind('styles.light.text.default.border'), v-bind('styles.dark.text.default.border')) !important;
-}
+    textarea
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        box-sizing: border-box
+        width: 100%
+        height: calc(100% - 30px)
+        border: none
+        border-radius: 10px
+        resize: none
+        font-size: 1.5ch
+        border: 2px solid light-dark(v-bind('styles.light.text.default.border'), v-bind('styles.dark.text.default.border')) !important
 </style>

@@ -287,7 +287,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="stylus">
 .AlexiconMedia-MAIN{
     width: 100%;
     height: 100%;
@@ -297,166 +297,147 @@ export default {
     overflow: hidden;
 }
 
-.AlexiconMedia-panel{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    position: absolute;
-    bottom: 0;
-}
+.AlexiconMedia-panel
+    width: 100%
+    display: flex
+    flex-direction: column
+    height: fit-content
+    position: absolute
+    bottom: 0
 
-.AlexiconMedia-rendered-cc{
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    width: fit-content;
-    height: fit-content;
-    text-align: center;
-    color: white;
-    max-width: 90%;
-    position: absolute;
-    bottom: 5px;
-    transition: bottom 0.5s;
-}
+    .AlexiconMedia-rendered-cc
+        margin: 0 auto
+        left: 0
+        right: 0
+        width: fit-content
+        height: fit-content
+        text-align: center
+        color: white
+        max-width: 90%
+        position: absolute
+        bottom: 5px
+        transition: bottom 0.5s
 
-.AlexiconMedia-rendered-cc span{
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0 5px;
-}
+        span
+            background-color: rgba(0, 0, 0, 0.5)
+            padding: 0 5px
 
-.AlexiconMedia-progress, .AlexiconMedia-controls{
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    transition: bottom 0.5s;
-}
+.AlexiconMedia-progress
+.AlexiconMedia-controls
+    background-color: rgba(0, 0, 0, 0.5)
+    color: white
+    transition: bottom 0.5s
 
 /* progress */
-.AlexiconMedia-progress{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    cursor: pointer;
-    height: 25px;
-    position: absolute;
-    bottom: 33px;
-    width: calc(100% - 20px);
-}
+.AlexiconMedia-progress
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 10px
+    cursor: pointer
+    height: 25px
+    position: absolute
+    bottom: 33px
+    width: calc(100% - 20px)
 
-.AlexiconMedia-progress-bg{
-    width: calc(100% - 5px);
-    height: 5px;
-    background-color: v-bind('styles.light.media.bg');
-    display: flex;
-    align-items: center;
-    border-radius: 100vw;
-}
 
-.AlexiconMedia-progress-bar{
-    background-color: v-bind('styles.light.media.progress');
-    height: 100%;
-    border-radius: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    transition: width 0.1s;
-}
-
-.AlexiconMedia-progress-thumb{
-    height: 15px;
-    aspect-ratio: 1/1 !important;
-    background-color: v-bind('styles.light.media.thumb');
-    border-radius: 100vw;
-    margin-right: -7.5px;
-}
+    .AlexiconMedia-progress-bg
+        width: calc(100% - 5px)
+        height: 5px
+        background-color: v-bind('styles.light.media.bg')
+        display: flex
+        align-items: center
+        border-radius: 100vw
+    
+        .AlexiconMedia-progress-bar
+            background-color: v-bind('styles.light.media.progress')
+            height: 100%
+            border-radius: 100vw
+            display: flex
+            align-items: center
+            justify-content: flex-end
+            transition: width 0.1s
+        
+            .AlexiconMedia-progress-thumb
+                height: 15px
+                aspect-ratio: 1/1 !important
+                background-color: v-bind('styles.light.media.thumb')
+                border-radius: 100vw
+                margin-right: -7.5px
 /* end progress */
 
-.AlexiconMedia-controls{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: fit-content;
-    height: 33px;
-    position: absolute;
-    bottom: 0;
-}
+.AlexiconMedia-controls
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    height: fit-content
+    height: 33px
+    position: absolute
+    bottom: 0
 
-.AlexiconMedia-controls > div{
-    display: flex;
-    align-items: center;
-    margin: 3px 5px;
-    margin-bottom: 5px;
-}
+    >div
+        display: flex;
+        align-items: center;
+        margin: 3px 5px;
+        margin-bottom: 5px;
 
-button{
-    color: white;
-    background-color: transparent;
-    border: none;
-    font-size: 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 25px;
-    aspect-ratio: 1/1;
-    padding-bottom: 2px;
-    border-radius: 100vw;
-}
+        &:nth-child(1) button
+            margin-right: 3px;
 
-button:hover{
-    cursor: pointer;
-    text-shadow: 0 0 5px white;
- 
-}
+            &:hover
+                background-color: v-bind('styles.light.media.progress');
 
-.AlexiconMedia-controls > div:nth-child(1) button{
-    margin-right: 3px;
-}
+        &:nth-child(2)
+            font-size: 12px;
 
-.AlexiconMedia-controls > div:nth-child(1) button:hover{
-    background-color: v-bind('styles.light.media.progress');
-}
+        &:nth-child(3) button:not(.AlexiconMedia-loop)
+            font-size: 14px;
+            wid: fit-content;
+            aspect-ratio: unset;
+            margin-left: 3px;
 
-.AlexiconMedia-controls > div:nth-child(2){
-    font-size: 12px;
-}
+button
+    color: white
+    background-color: transparent
+    border: none
+    font-size: 15px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    width: 25px
+    aspect-ratio: 1/1
+    padding-bottom: 2px
+    border-radius: 100vw
 
-.AlexiconMedia-controls > div:nth-child(3) button:not(.AlexiconMedia-loop){
-    font-size: 14px;
-    width: fit-content;
-    aspect-ratio: unset;
-    margin-left: 3px;
-}
+    &:hover
+        cursor: pointer
+        text-shadow: 0 0 5px white
 
-.AlexiconMedia-cc{
-    border: 1px solid white;
-    border-radius: 3px;
-    height: fit-content;
-    font-size: 10px !important;
-    margin-right: 2px;
-}
+.AlexiconMedia-cc
+    border: 1px solid white
+    border-radius: 3px
+    height: fit-content
+    font-size: 10px !important
+    margin-right: 2px
 
-.AlexiconMedia-cc-true{
-    background-color: white;
-    color: v-bind('styles.light.media.progress');
-}
+.AlexiconMedia-cc-true
+    background-color: white
+    color: v-bind('styles.light.media.progress')
 
-.AlexiconMedia-loop{
-    margin-left: 3px;
-}
+.AlexiconMedia-loop
+    margin-left: 3px
 
-.AlexiconMedia-loop-true{
-    color: v-bind('styles.light.media.progress');
-    background-color: white;
-    font-size: 16px;
-    padding-bottom: 5px;
-}
+.AlexiconMedia-loop-true
+    color: v-bind('styles.light.media.progress')
+    background-color: white
+    font-size: 16px
+    padding-bottom: 5px
 
-.AlexiconMedia-cc-false:hover, .AlexiconMedia-loop-false:hover{
-    background-color: v-bind('styles.light.media.progress');
-    color: white;
-    border: 1px solid transparent;
-}
+.AlexiconMedia-cc-false:hover
+.AlexiconMedia-loop-false:hover
+    background-color: v-bind('styles.light.media.progress')
+    color: white
+    border: 1px solid transparent
 </style>

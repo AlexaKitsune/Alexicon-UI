@@ -340,79 +340,79 @@ export default {
 		}
 					`,
 			testMd: `
-		# Marked in Node.js\n\nRendered by **marked**.
-		- **Preview:**  A live display of the generated HTML as it would render in a browser.
-		- **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
-		___
+# Marked in Node.js\n\nRendered by **marked**.
+- **Preview:**  A live display of the generated HTML as it would render in a browser.
+- **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
+___
 
-		---
+---
 
-		***
-		# h1 Heading 8-)
-		## h2 Heading
+***
+# h1 Heading 8-)
+## h2 Heading
 		### h3 Heading
-		#### h4 Heading
-		##### h5 Heading
-		###### h6 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
 
-		## Emphasis
+## Emphasis
 
-		**This is bold text**
+**This is bold text**
 
-		__This is bold text__
+__This is bold text__
 
-		*This is italic text*
+*This is italic text*
 
-		_This is italic text_
+_This is italic text_
 
-		~~Strikethrough~~
+~~Strikethrough~~
 
 
-		> Blockquotes can also be nested...
-		>> ...by using additional greater-than signs right next to each other...
-		> > > ...or with spaces between arrows.
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
 
-		## Tables
+## Tables
 
-		| Option | Description |
-		| ------ | ----------- |
-		| data   | path to data files to supply the data that will be passed into templates. |
-		| engine | engine to be used for processing templates. Handlebars is the default. |
-		| ext    | extension to be used for dest files. |
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
 
-		Right aligned columns
+Right aligned columns
 
-		| Option | Description |
-		| ------:| -----------:|
-		| data   | path to data files to supply the data that will be passed into templates. |
-		| engine | engine to be used for processing templates. Handlebars is the default. |
-		| ext    | extension to be used for dest files. |
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
 
-		katex: $$c = \\pm\\sqrt{a^2 + b^2}$$
+katex: $$c = \\pm\\sqrt{a^2 + b^2}$$
 
-		\`inline micro code\` and so on
+\`inline micro code\` and so on
 
-		>! This is a spoiler
+>!spoiler
 
-		こんにちは、私はアレクサです。
-		二十七歳です。
-		メキシコ人です。
+こんにちは、私はアレクサです。
+二十七歳です。
+メキシコ人です。
 
-		\`\`\`css
-		@font-face {
-		font-family: Chunkfive; src: url('Chunkfive.otf');
-		}
-		\`\`\`
+\`\`\`css
+@font-face {
+	font-family: Chunkfive; src: url('Chunkfive.otf');
+}
+\`\`\`
 
-		\`\`\`js
-		const a = 1;
-		console.log("hola");
-		\`\`\`
+\`\`\`js
+const a = 1;
+console.log("hola");
+\`\`\`
 
-		Ready to start writing?  Either start changing stuff on the left or
-		[clear everything](/demo/?text=) with a simple click.
+Ready to start writing?  Either start changing stuff on the left or
+[clear everything](/demo/?text=) with a simple click.
 
-		[Marked]: https://github.com/markedjs/marked/
+[Marked]: https://github.com/markedjs/marked/
 			`,
 		}
   },

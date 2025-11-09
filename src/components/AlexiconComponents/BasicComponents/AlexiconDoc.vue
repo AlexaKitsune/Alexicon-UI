@@ -202,152 +202,125 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconDoc-MAIN{
-    width: calc(100% - 4px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 5px;
-    overflow: hidden;
-    border: 2px solid light-dark(v-bind('styles.light.doc.label'), v-bind('styles.dark.doc.label'));
-}
+<style scoped lang="stylus">
+.AlexiconDoc-MAIN
+    width: calc(100% - 4px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    border-radius: 5px
+    overflow: hidden
+    border: 2px solid light-dark(v-bind('styles.light.doc.label'), v-bind('styles.dark.doc.label'))
 
-.AlexiconDoc-MAIN > *{
-    width: 100%;
-    max-width: 100%;
-}
+    >*
+        width: 100%
+        max-width: 100%
 
-.AlexiconDoc-MAIN > div:first-child{
-    width: calc(100% - 1ch);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    font-size: 1.5ch;
-    padding: 0.5ch;
-    background-color: light-dark(v-bind('styles.light.doc.label'), v-bind('styles.dark.doc.label'));
-    color: light-dark(v-bind('styles.light.doc.txt'), v-bind('styles.dark.doc.txt'));
-}
+    >div:first-child
+        width: calc(100% - 1ch)
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        text-align: center
+        font-size: 1.5ch
+        padding: 0.5ch
+        background-color: light-dark(v-bind('styles.light.doc.label'), v-bind('styles.dark.doc.label'))
+        color: light-dark(v-bind('styles.light.doc.txt'), v-bind('styles.dark.doc.txt'))
 
-.AlexiconDoc-MAIN > div:first-child span{
-    font-size: 1.2ch;
-}
+        span
+            font-size: 1.2ch
 
-.AlexiconDoc-MAIN > div:first-child > div:first-child{
-    margin-right: 2ch;
-    pointer-events: none;
-}
+        >div:first-child
+            margin-right: 2ch;
+            pointer-events: none;
 
-.AlexiconDoc-MAIN > div:first-child > div:last-child{
-    display: flex;
-}
+        >div:last-child
+            display: flex;
 
-.AlexiconDoc-MAIN .Alexicon-icon-btn{
-    margin-left: 3px;
-    cursor: pointer;
-    min-width: 5ch;
-}
+.AlexiconDoc-MAIN .Alexicon-icon-btn
+    margin-left: 3px
+    cursor: pointer
+    min-width: 5ch
 
-.AlexiconDoc-MAIN .Alexicon-icon-btn > *{
-    margin-bottom: -3px;
-}
+    >*
+        margin-bottom: -3px
 
-.AlexiconDoc-MAIN > div:not(:first-child):not(.AlexiconDoc-html){
-    background-color: red;
-    background-color: light-dark(rgba(128, 128, 128, 0.1), rgba(128, 128, 128, 0.2));
-}
+.AlexiconDoc-MAIN > div:not(:first-child):not(.AlexiconDoc-html)
+    background-color: light-dark(rgba(128, 128, 128, 0.1), rgba(128, 128, 128, 0.2))
 
-.AlexiconDoc-pdf{
-    aspect-ratio: 2/1 !important;
-}
+.AlexiconDoc-pdf
+    aspect-ratio: 2/1 !important
 
-.AlexiconDoc-pdf > div{
-    width: 100%;
-    height: 100%;
-}
+    >div
+        width: 100%
+        height: 100%
 
-.AlexiconDoc-pdf object{
-    width: 100%;
-    height: 100%;
-}
+    object
+        width: 100%
+        height: 100%
 
-.AlexiconDoc-pdf iframe{
-    height: 100%;
-}
+    iframe
+        height: 100%
 
-.AlexiconDoc-docx{
-    overflow: auto;
-    aspect-ratio: 2/1 !important;
-    color-scheme: light;
-    background-color: white !important;
-    color: black;
-}
+.AlexiconDoc-docx
+    overflow: auto
+    aspect-ratio: 2/1 !important
+    color-scheme: light
+    background-color: white !important
+    color: black
 
-.AlexiconDoc-docx >>> *{
-    max-width: 100%;
-    color-scheme: light;
-}
+    &:deep(*)
+        max-width: 100%
+        color-scheme: light
 
-.AlexiconDoc-xlsx{
-    overflow: auto;
-    aspect-ratio: 2/1 !important;
-    font-size: 1.25ch;
-}
+.AlexiconDoc-xlsx
+    overflow: auto
+    aspect-ratio: 2/1 !important
+    font-size: 1.25ch
 
-.AlexiconDoc-xlsx >>> *{
-    white-space:nowrap;
-    border: 1px dotted #089308;
-}
+    &:deep(*)
+        white-space:nowrap
+        border: 1px dotted #089308
 
-.AlexiconDoc-xlsx >>> table{
-    border: 0;
-}
+    &:deep(table)
+        border: 0
 
-.AlexiconDoc-xlsx >>> tr{
-    height: 0;
-    border: 0;
-}
+    &:deep(tr)
+        height: 0
+        border: 0
 
-p {
-    position: absolute;
-    color: white;
-}
+p
+    position: absolute
+    color: white
 
-.AlexiconDoc-font{
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    position: relative;
-    padding: 0.5ch 0;
-}
+.AlexiconDoc-font
+    display: flex
+    flex-direction: column
+    height: fit-content
+    position: relative
+    padding: 0.5ch 0
 
-.AlexiconDoc-font p{
-    position: relative;
-    margin: 0;
-    text-align: center;
-    color: light-dark(v-bind('styles.light.doc.txt'), v-bind('styles.dark.doc.txt'));
-    font-family: unset;
-}
+    p
+        position: relative
+        margin: 0
+        text-align: center
+        color: light-dark(v-bind('styles.light.doc.txt'), v-bind('styles.dark.doc.txt'))
+        font-family: unset
 
-.AlexiconDoc-html{
-    aspect-ratio: 2/1 !important;
-}
+.AlexiconDoc-html
+    aspect-ratio: 2/1 !important
 
-.AlexiconDoc-html > iframe{
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+    >iframe
+        width: 100%
+        height: 100%
+        border: none
 
-.AlexiconDoc-plain{
-    height: fit-content;
-    max-height: 30ch;
-}
+.AlexiconDoc-plain
+    height: fit-content
+    max-height: 30ch
 
-.AlexiconDoc-plain > *{
-    width: 100%;
-    height: 100%;
-}
+    >*
+        width: 100%
+        height: 100%
 </style>

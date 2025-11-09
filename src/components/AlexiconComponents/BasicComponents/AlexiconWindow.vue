@@ -111,78 +111,68 @@ export default {
 };
 </script>
 
-<style scoped>
-.AlexiconWindow-MAIN{
-    width: fit-content;
-    position: absolute;
-    left: 100px;
-    top: 100px;
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 999;
-    box-shadow: 0 0 1ch rgba(64, 64, 64, 0.5);
-    border: 2px solid light-dark(v-bind('styles.light.window.inactive.bar'), v-bind('styles.dark.window.inactive.bar'));
-}
+<style scoped lang="stylus">
+.AlexiconWindow-MAIN
+    width: fit-content
+    position: absolute
+    left: 100px
+    top: 100px
+    border-radius: 5px
+    overflow: hidden
+    z-index: 999
+    box-shadow: 0 0 1ch rgba(64, 64, 64, 0.5)
+    border: 2px solid light-dark(v-bind('styles.light.window.inactive.bar'), v-bind('styles.dark.window.inactive.bar'))
 
-.AlexiconWindow-bar{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 1ch;
-    cursor: move;
-    font-size: 1.5ch;
-    background-color: light-dark(v-bind('styles.light.window.inactive.bar'), v-bind('styles.dark.window.inactive.bar'));
-}
+.AlexiconWindow-bar
+    width: 100%
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    min-height: 1ch
+    cursor: move
+    font-size: 1.5ch
+    background-color: light-dark(v-bind('styles.light.window.inactive.bar'), v-bind('styles.dark.window.inactive.bar'))
 
-.AlexiconWindow-bar p{
-    margin: 0 0.5ch;
-}
+    p
+        margin: 0 0.5ch
 
-.AlexiconWindow-close{
-    border-radius: 100vw;
-    aspect-ratio: 1/1;
-    font-size: 2.5ch;
-    width: 1ch;
-    height: 1ch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    rotate: 45deg;
-    margin-right: 0.15ch;
-    padding-bottom: 0.2ch;
-    padding-left: 0.1ch;
-    padding-right: 0.1ch;
-    color: red;
-}
+.AlexiconWindow-close
+    border-radius: 100vw
+    aspect-ratio: 1/1
+    font-size: 2.5ch
+    width: 1ch
+    height: 1ch
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    rotate: 45deg
+    margin-right: 0.15ch
+    padding-bottom: 0.2ch
+    padding-left: 0.1ch
+    padding-right: 0.1ch
+    color: red
 
-.AlexiconWindow-close:hover{
-    background-color: red;
-    color: white;
-    cursor: pointer;
-}
+    &:hover
+        background-color: red
+        color: white
+        cursor: pointer
 
-.AlexiconWindow-active-true{
-    border: 2px solid light-dark(v-bind('styles.light.window.active.bar'), v-bind('styles.dark.window.active.bar')) !important;
-    z-index: 1001;
-}
+.AlexiconWindow-active-true
+    border: 2px solid light-dark(v-bind('styles.light.window.active.bar'), v-bind('styles.dark.window.active.bar')) !important
+    z-index: 1001
 
-.AlexiconWindow-active-true > .AlexiconWindow-bar{
-    background-color: light-dark(v-bind('styles.light.window.active.bar'), v-bind('styles.dark.window.active.bar')) !important;
-    color: white;
-}
+    >.AlexiconWindow-bar
+        background-color: light-dark(v-bind('styles.light.window.active.bar'), v-bind('styles.dark.window.active.bar')) !important
+        color: white
 
-.AlexiconWindow-active-true .AlexiconWindow-close{
-    color: white !important;
-}
+    .AlexiconWindow-close
+        color: white !important
 
-.AlexiconWindow-title-false{
-    border: none !important;
-}
+.AlexiconWindow-title-false
+    border: none !important
 
-.AlexiconWindow-title-false *{
-    cursor: move;
-}
+    *
+        cursor: move;
 </style>
