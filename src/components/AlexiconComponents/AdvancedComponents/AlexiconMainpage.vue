@@ -42,6 +42,8 @@ export default {
     width: 1440px;
     max-width: 90%;
     margin: 0 auto;
+    padding: 0 1ch;
+    max-width: 100vw;
 }
 
 .AlexiconMainpage-MAIN:deep(.Alexicon-main .highlighted-btn){
@@ -51,6 +53,7 @@ export default {
 
 .AlexiconMainpage-MAIN:deep(.Alexicon-main .highlighted-btn:disabled){
     opacity: 0.5 !important;
-    cursor: unset;
+    cursor: unset !important;
+    filter: grayscale(0.5);
 }
 </style>

@@ -110,7 +110,7 @@ export default {
             })
             .then( data => data.json() )
             .then( data => {
-                console.log(data)
+                console.log("data del login", data)
                 if(data.response == "Correct login."){
                     localStorage.setItem("AlexiconUserData", JSON.stringify({
                         sessionActive: true,
@@ -118,6 +118,8 @@ export default {
                         token: data.access_token
                     }));
                     this.$emit('activate-session', true);
+                }else{
+                    this.$emit('login-register-err', data);
                 }
             })
         },
@@ -140,10 +142,13 @@ export default {
                 },
                 body: JSON.stringify(userData)
             })
+            .then(res => res.json())
             .then( data => {
-                console.log(data);
+                console.log("data del register", data, data.response);
                 if(data.response == "User added successfully."){
                     this.login();
+                }else{
+                    this.$emit('login-register-err', data);
                 }
             })
         }
@@ -176,13 +181,13 @@ export default {
 }
 
 .AlexiconUniversalLoginRegister-MAIN > section{
-    width: fit-content;
+    width: 640px;
     height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 90vw;
+    max-width: calc(100% - 6ch - 10vw);
     max-height: 90vh;
     background-color: light-dark(v-bind('styles.light.LoginRegister.bg'), v-bind('styles.dark.LoginRegister.bg'));
     padding: 2ch 3ch;

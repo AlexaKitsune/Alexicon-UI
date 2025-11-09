@@ -27,7 +27,7 @@
 
         <div v-if="typeDoc == 'psd' && preview" class="AlexiconDoc-psd"></div>
 
-        <div v-if="typeDoc == 'ttf' && preview" class="AlexiconDoc-font" :style="`font-family:'${docName.split('.')[0]}';`">
+        <div v-if="(typeDoc == 'ttf' || typeDoc == 'otf' || typeDoc == 'woff') && preview" class="AlexiconDoc-font" :style="`font-family:'${docName.split('.')[0]}';`">
             <div v-html="fontStyle" style="display: none;"></div>
             <p>0123456789.:,;*'"¡!¿?(){}[]/\_-+=^#$%&@°|~`´</p>
             <p>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</p>
@@ -67,7 +67,7 @@ export default {
     },
     props:{
         styles: Object,
-        src: String,
+        val: Array,
     },
     data(){
         const openingAsPlain = [
@@ -77,11 +77,12 @@ export default {
             typeDoc: '',
             docContent: '',
             docName: '',
+            src: '',
             preview: false,
             keyUpdater: 0,
             openingAsPlain: openingAsPlain,
             previewAvailableFormats: [
-                "pdf", "docx", "xls", "xlsx", "ttf", "html", "htm", "mp4", "webm", "ogg",
+                "pdf", "docx", "xls", "xlsx", "ttf", "otf", "woff", "html", "htm", "mp4", "webm", "ogg",
                 ...openingAsPlain
             ],
             docData: {},
@@ -164,14 +165,24 @@ export default {
         },
     },
     mounted() {
-        this.typeDoc = this.doc?.toLowerCase() || this.src.split('.').pop().toLowerCase();
-        this.docName = this.src.split('/').pop();
+        if(typeof this.val == "string") {
+            this.src = this.val;
+            this.typeDoc = this.doc?.toLowerCase() || this.src.split('.').pop().toLowerCase();
+            this.docName = this.src.split('/').pop();
+        } else {
+            this.src = this.val.url;
+            this.typeDoc = this.val.type.split("/")[1];
+            this.docName = this.val.filename;
+        }
+        
         this.docData = {
             "pdf": {icon: FileText, render: undefined},
             "docx": {icon: FileText, render: this.renderDocx},
             "xls": {icon: Sheet, render: undefined},
             "xlsx": {icon: Sheet, render: this.renderExcel},
             "ttf": {icon: CaseSensitive, render: this.setFontStyle},
+            "otf": {icon: CaseSensitive, render: this.setFontStyle},
+            "woff": {icon: CaseSensitive, render: this.setFontStyle},
             "html": {icon: FileCode, render: undefined},
             "htm": {icon: FileCode, render: undefined},
             "mp4": {icon: Video, render: undefined},
@@ -229,9 +240,14 @@ export default {
     pointer-events: none;
 }
 
+.AlexiconDoc-MAIN > div:first-child > div:last-child{
+    display: flex;
+}
+
 .AlexiconDoc-MAIN .Alexicon-icon-btn{
     margin-left: 3px;
     cursor: pointer;
+    min-width: 5ch;
 }
 
 .AlexiconDoc-MAIN .Alexicon-icon-btn > *{

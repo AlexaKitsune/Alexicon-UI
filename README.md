@@ -313,7 +313,10 @@ However, there are some specific events for specific components:
     <div class="Alexicon-container">
         <AlexiconComponent :type="'asidemenu'" :active="menuActive"></AlexiconComponent>
         <main class="Alexicon-main">
-            (content...)
+            <!--if needed:--> <AlexiconComponent :type="'popup'" @close=""/>
+
+            <!--content...-->
+
         </main>
     </div>
 </AlexiconComponent>

@@ -1,6 +1,6 @@
 <template>
     <!--Basic components-->
-    <AlexiconText v-if="type == 'text'" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" @get-val="updateValue"/>
+    <AlexiconText v-if="type == 'text' || type == 'password'" :type="type" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" @get-val="updateValue"/>
     <AlexiconButton v-if="type == 'button'" :styles="styles" :disabled="disabled"><slot></slot></AlexiconButton>
     <AlexiconRange v-if="type == 'range'" :styles="styles" :disabled="disabled" :step="step" :min="min" :max="max" :val="val" @get-val="updateValue"/>
     <AlexiconCheckbox v-if="type == 'checkbox'" :styles="styles" :disabled="disabled" :checked="checked" @get-val="updateValue"/>
@@ -9,18 +9,21 @@
     <AlexiconColor v-if="type == 'color'" :styles="styles" :val="val" :standalone="standalone" @get-val="updateValue"/>
     <AlexiconKnob v-if="type == 'knob'" :styles="styles" :disabled="disabled" :step="step" :min="min" :max="max" :val="val" @get-val="updateValue"/>
     <AlexiconMicroKnob v-if="type == 'microknob'" :styles="styles" :disabled="disabled" :step="step" :min="min" :max="max" :val="val" @get-val="updateValue"/>
+    <AlexiconPopup v-if="type == 'popup'" :title="title" :text="text" @close="(val) => updateSpecificValue(val, 'close')"/>
     <AlexiconMedia v-if="type=='video'" :styles="styles" :type="type" :src="src" :autoplay="autoplay" :loop="loop" :framerate="framerate" :subtitles="subtitles" @get-play-pause="(val) => updateSpecificValue(val, 'get-play-pause')" @get-current-time="(val) => updateSpecificValue(val, 'get-current-time')" @get-seek="(val) => updateSpecificValue(val, 'get-seek')" @get-cc="(val) => updateSpecificValue(val, 'get-cc')" @get-loop="(val) => updateSpecificValue(val, 'get-loop')"/>
     <AlexiconMedia v-if="type=='audio'" :styles="styles" :type="type" :src="src" :autoplay="autoplay" :loop="loop" @get-play-pause="(val) => updateSpecificValue(val, 'get-play-pause')" @get-current-time="(val) => updateSpecificValue(val, 'get-current-time')" @get-seek="(val) => updateSpecificValue(val, 'get-seek')" @get-loop="(val) => updateSpecificValue(val, 'get-loop')"/>
     <AlexiconCode v-if="type=='code'" :styles="styles" :val="val"/>
     <AlexiconMarkdown v-if="type=='markdown'" :val="val"/>
     <AlexiconWindow v-if="type=='window'" :styles="styles" :title="title" :initialPosition="initialPosition"><slot></slot></AlexiconWindow>
-    <AlexiconDoc v-if="type=='doc'" :styles="styles" :src="src"/>
+    <AlexiconDoc v-if="type=='doc'" :styles="styles" :val="val"/>
     <AlexiconTextarea v-if="type == 'textarea'" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" :standalone="standalone" :resize="resize" :maxlength="maxlength" @get-val="updateValue"/>
     <!--Advanced components-->
     <AlexiconMainpage v-if="type == 'mainpage'" :highlightBtnColor="highlightBtnColor"><slot></slot></AlexiconMainpage>
     <AlexiconSearchbar v-if="type == 'searchbar'" :styles="styles" :val="val" :placeholder="placeholder" :disabled="disabled" :bgcolor="bgcolor" @get-switch-menu="(val) => updateSpecificValue(val, 'get-switch-menu')"><slot></slot></AlexiconSearchbar>
     <AlexiconAsidemenu v-if="type == 'asidemenu'" :active="active" :size="size"><slot></slot></AlexiconAsidemenu>
-    <AlexiconUniversalLoginRegister v-if="type == 'universalloginregister'" :styles="styles" :serviceName="serviceName" :txtColor="txtColor" :bgImg="bgImg" @activate-session="updateValue"/>
+    <AlexiconUniversalLoginRegister v-if="type == 'universalloginregister'" :styles="styles" :serviceName="serviceName" :txtColor="txtColor" :bgImg="bgImg" @activate-session="updateValue" @login-register-err="(val) => updateSpecificValue(val, 'login-register-err')"/>
+    <AlexiconMasonry v-if="type == 'masonry'" :media="media" :colsNum="colsNum"/>
+    <AlexiconEmergent v-if="type == 'emergent'" @close="(val) => updateSpecificValue(val, 'close')" :title="title"><slot></slot></AlexiconEmergent>
 </template>
 
 <script>
@@ -45,6 +48,9 @@ import AlexiconMainpage from './AdvancedComponents/AlexiconMainpage.vue';
 import AlexiconSearchbar from './AdvancedComponents/AlexiconSearchbar.vue';
 import AlexiconAsidemenu from './AdvancedComponents/AlexiconAsidemenu.vue';
 import AlexiconUniversalLoginRegister from './AdvancedComponents/AlexiconUniversalLoginRegister.vue';
+import AlexiconMasonry from './AdvancedComponents/AlexiconMasonry.vue';
+import AlexiconEmergent from './AdvancedComponents/AlexiconEmergent.vue';
+import AlexiconPopup from './BasicComponents/AlexiconPopup.vue';
 
 export default {
     name: 'AlexiconComponent',
@@ -65,11 +71,14 @@ export default {
         AlexiconWindow,
         AlexiconDoc,
         AlexiconTextarea,
+        AlexiconPopup,
         //Advanced components:
         AlexiconMainpage,
         AlexiconSearchbar,
         AlexiconAsidemenu,
         AlexiconUniversalLoginRegister,
+        AlexiconMasonry,
+        AlexiconEmergent,
     },
     props:{
         type: String,
@@ -99,6 +108,9 @@ export default {
         txtColor: String,
         bgImg: String,
         highlightBtnColor: String,
+        media: Array,
+        colsNum: Number,
+        text: String,
     },
     data(){
         const purple = '#7700ff';
@@ -381,37 +393,32 @@ export default {
 }
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+<style lang="stylus">
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
-:root {
-  color-scheme: light dark;
-}
+:root
+    color-scheme: light dark
 
-input[type=text], input[type=number], input[type=tel], input[type=email], input[type=password], textarea{
-    border: 2px solid light-dark(v-bind('styles.light.text.default.border'), v-bind('styles.dark.text.default.border'));
-    color: light-dark(v-bind('styles.light.text.default.txt'), v-bind('styles.dark.text.default.txt'));
-    background-color: light-dark(v-bind('styles.light.text.default.bg'), v-bind('styles.dark.text.default.bg'));
-    border-radius: 5px;
-}
+textarea, input[type=text], input[type=number], input[type=tel], input[type=email], input[type=password]
+    border: 2px solid light-dark(v-bind('styles.light.text.default.border'), v-bind('styles.dark.text.default.border'))
+    color: light-dark(v-bind('styles.light.text.default.txt'), v-bind('styles.dark.text.default.txt'))
+    background-color: light-dark(v-bind('styles.light.text.default.bg'), v-bind('styles.dark.text.default.bg'))
+    border-radius: 5px
 
-input[type=text]:disabled, input[type=number]:disabled, input[type=tel]:disabled, input[type=email]:disabled, input[type=password]:disabled, textarea:disabled{
-    border: 2px solid light-dark(v-bind('styles.light.text.disabled.border'), v-bind('styles.dark.text.disabled.border'));
-    color: light-dark(v-bind('styles.light.text.disabled.txt'), v-bind('styles.dark.text.disabled.txt'));
-    background-color: light-dark(v-bind('styles.light.text.disabled.bg'), v-bind('styles.dark.text.disabled.bg'));
-}
+    &:disabled
+        border: 2px solid light-dark(v-bind('styles.light.text.disabled.border'), v-bind('styles.dark.text.disabled.border'))
+        color: light-dark(v-bind('styles.light.text.disabled.txt'), v-bind('styles.dark.text.disabled.txt'))
+        background-color: light-dark(v-bind('styles.light.text.disabled.bg'), v-bind('styles.dark.text.disabled.bg'))
 
-*:not(.Alexicon-unfont){
-    font-family: "Roboto Mono", serif;
-}
+*:not(.Alexicon-unfont)
+    font-family: "Roboto Mono", serif
 
-.Alexicon-icon-btn{
-    border: none;
-    margin: none;
-    padding: none;
-    width: fit-content;
-    height: fit-content;
-    background-color: transparent;
-}
+.Alexicon-icon-btn
+    border: none
+    margin: none
+    padding: none
+    width: fit-content
+    height: fit-content
+    background-color: transparent
 </style>
