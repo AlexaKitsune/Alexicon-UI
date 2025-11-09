@@ -130,89 +130,75 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconSearchbar-MAIN{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1ch;
-    width: 100%;
-    height: 40px;
-    position: fixed;
-    z-index: 1001;
-    transition: background-color 0.2s;
-    box-shadow: 0 0 1ch light-dark(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
-    transition: margin-top 0.4s;
-}
+<style scoped lang="stylus">
+.AlexiconSearchbar-MAIN
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 1ch
+    width: 100%
+    height: 40px
+    position: fixed
+    z-index: 1001
+    transition: background-color 0.2s
+    box-shadow: 0 0 1ch light-dark(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75))
+    transition: margin-top 0.4s
 
-.AlexiconSearchbar-spacer{
-    height: 40px;
-    opacity: 0;
-}
+    >div
+        display: flex
+        align-items: center
+        justify-content: space-between
+        width: 100%
+        height: 100%
 
-.AlexiconSearchbar-MAIN > div{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-}
+        >div
+            display: flex
+            align-items: center
 
-.AlexiconSearchbar-MAIN > div > div{
-    display: flex;
-    align-items: center;
-}
+    input[type=text]
+        background-color: transparent
+        height: 100%
+        width: calc()
+        margin: 0
 
-.AlexiconSearchbar-bar-set{
-    display: flex;
+.AlexiconSearchbar-spacer
+    height: 40px
+    opacity: 0
+
+.AlexiconSearchbar-bar-set
+    display: flex
+    flex-direction: row
+    align-items: center
+    background-color: rgba(128, 128, 128, 0.2)
+    width: fit-content
+    border-radius: 100vw
+    padding: 0 1ch
+    font-size: 1.5ch
+    transition: background-color 0.1s
+
+    >div
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 100%
+        width: 100%
+
+.Alexicon-searchbar-moveleft
+    margin-left: -4px
     
-    flex-direction: row;
-    align-items: center;
-    background-color: rgba(128, 128, 128, 0.2);
-    width: fit-content;
-    border-radius: 100vw;
-    padding: 0 1ch;
-    font-size: 1.5ch;
-    transition: background-color 0.1s;
-}
+    >*
+        margin-bottom: -3px
 
-.Alexicon-searchbar-moveleft{
-    margin-left: -4px;
-}
+.Alexicon-searchbar-search
+    margin-right: -4px
 
-.Alexicon-searchbar-moveleft > *{
-    margin-bottom: -3px;
-}
+    >*
+        margin-bottom: -3px
 
-.Alexicon-searchbar-search{
-    margin-right: -4px;
-}
+.AlexiconSearchbar-bar-focused-true
+    background-color: white
 
-.Alexicon-searchbar-search > *{
-    margin-bottom: -3px;
-}
-
-.AlexiconSearchbar-bar-set > div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-
-.AlexiconSearchbar-MAIN input[type=text]{
-    background-color: transparent;
-    height: 100%;
-    width: calc();
-    margin: 0;
-}
-
-.AlexiconSearchbar-bar-focused-true{
-    background-color: white;
-}
-
-.AlexiconSearchbar-bar-focused-true input[type=text]{
-    color: black;
-    outline: none;
-}
+    input[type=text]
+        color: black
+        outline: none
 </style>

@@ -48,34 +48,30 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconMasonry-MAIN{
-    width: 100%;
-    display: flex;
-}
+<style scoped lang="stylus">
+.AlexiconMasonry-MAIN
+    width: 100%
+    display: flex
 
-.AlexiconMasonry-col{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+.AlexiconMasonry-col
+    display: flex
+    flex-direction: column
+    align-items: center
 
-.AlexiconMasonry-col > div{
-    width: 100%;
-    display: block;
-}
+    >div
+        width: 100%
+        display: block
 
-.AlexiconMasonry-col > div > img, .AlexiconMasonry-col > div > video{
-    display: block;
-    width: 100%;
-    border-radius: 5px;
-    scale: 0.97;
-    margin: 0;
-}
+        >img
+        >video
+            display: block
+            width: 100%
+            border-radius: 5px
+            scale: 0.97
+            margin: 0
 
-.AlexiconMasonry-col > div > img:hover, .AlexiconMasonry-col > div > video:hover{
-    cursor: pointer;
-    filter: brightness(0.8);
-    transition: filter 0.2s;
-}
+            &:hover
+                cursor: pointer
+                filter: brightness(0.8)
+                transition: filter 0.2s
 </style>

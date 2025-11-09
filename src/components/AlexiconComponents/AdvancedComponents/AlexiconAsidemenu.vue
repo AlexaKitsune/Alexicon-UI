@@ -47,21 +47,19 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconAsideMenu-MAIN{
-    width: fit-content;
-    min-width: fit-content;
-    min-height: 100%;
-    overflow: visible;
-    z-index: 1000;
-    background-color: light-dark(rgb(242, 242, 242), #2d2d2d);
-}
+<style scoped lang="stylus">
+.AlexiconAsideMenu-MAIN
+    width: fit-content
+    min-width: fit-content
+    min-height: 100%
+    overflow: visible
+    z-index: 1000
+    background-color: light-dark(rgb(242, 242, 242), #2d2d2d)
 
-.AlexiconAsideMenu-MAIN > div{
-    height: calc(100vh - 40px);
-    transition: width 0.2s;
-    position: sticky;
-    top: 40px;
-    overflow: hidden;
-}
+    >div
+        height: calc(100vh - 40px)
+        transition: width 0.2s
+        position: sticky
+        top: 40px
+        overflow: hidden
 </style>

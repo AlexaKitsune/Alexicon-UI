@@ -168,90 +168,79 @@ export default {
 }
 </script>
 
-<style scoped>
-.AlexiconUniversalLoginRegister-MAIN{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-size: cover;
-}
+<style scoped lang="stylus">
+.AlexiconUniversalLoginRegister-MAIN
+    width: 100%
+    height: 100vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    background-position: center
+    background-size: cover
 
-.AlexiconUniversalLoginRegister-MAIN > section{
-    width: 640px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: calc(100% - 6ch - 10vw);
-    max-height: 90vh;
-    background-color: light-dark(v-bind('styles.light.LoginRegister.bg'), v-bind('styles.dark.LoginRegister.bg'));
-    padding: 2ch 3ch;
-    border-radius: 10px;
-}
+    >section
+        width: 640px
+        height: fit-content
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        max-width: calc(100% - 6ch - 10vw)
+        max-height: 90vh
+        background-color: light-dark(v-bind('styles.light.LoginRegister.bg'), v-bind('styles.dark.LoginRegister.bg'))
+        padding: 2ch 3ch
+        border-radius: 10px
 
-.AlexiconUniversalLoginRegister-MAIN > section h1{
-    margin: 0;
-    margin-bottom: 1.5ch;
-}
+        h1
+            margin: 0
+            margin-bottom: 1.5ch
 
-.AlexiconUniversalLoginRegister-MAIN input{
-    margin-bottom: 0.75ch;
-    width: 30ch;
-    min-width: 30ch;
-}
+        >div:nth-child(2) >div
+            display: flex
+            flex-direction: column
+            align-items: center
 
-.AlexiconUniversalLoginRegister-MAIN section > div:nth-child(2) > div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        >div:nth-child(3)
+            width: 100%
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: space-between
+            margin-top: 1.5ch
 
-.AlexiconUniversalLoginRegister-genders{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 25ch;
-    margin-top: 0.5ch;
-    margin-bottom: 0.5ch;
-}
+            p
+                margin: 0
+                font-size: 1.5ch
+                font-style: italic
+                cursor: pointer
 
-.AlexiconUniversalLoginRegister-genders label{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    font-size: 1.25ch;
-}
+            div
+                display: flex
+                align-items: center
 
-.AlexiconUniversalLoginRegister-MAIN > section > div:nth-child(3){
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1.5ch;
-}
+            .Alexicon-icon-btn
+                margin-top: 0.5ch
+                margin-right: 1ch
+                cursor: pointer
 
-.AlexiconUniversalLoginRegister-MAIN > section > div:nth-child(3) p{
-    margin: 0;
-    font-size: 1.5ch;
-    font-style: italic;
-    cursor: pointer;
-}
+    input
+        margin-bottom: 0.75ch
+        width: 30ch
+        min-width: 30ch
 
-.AlexiconUniversalLoginRegister-MAIN > section > div:nth-child(3) div{
-    display: flex;
-    align-items: center;
-}
+.AlexiconUniversalLoginRegister-genders
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 25ch
+    margin-top: 0.5ch
+    margin-bottom: 0.5ch
 
-.AlexiconUniversalLoginRegister-MAIN > section > div:nth-child(3) .Alexicon-icon-btn{
-    margin-top: 0.5ch;
-    margin-right: 1ch;
-    cursor: pointer;
-}
+    label
+        display: flex
+        flex-direction: row-reverse
+        align-items: center
+        font-size: 1.25ch
 </style>
