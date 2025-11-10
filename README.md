@@ -330,4 +330,5 @@ npm i marked-katex-extension
 npm i marked-highlight
 npm i srt-parser-2
 npm i lucide-vue-next
+npm i three
 ```

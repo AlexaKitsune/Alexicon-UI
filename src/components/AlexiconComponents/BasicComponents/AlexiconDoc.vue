@@ -48,6 +48,10 @@
             <AlexiconMedia :styles="styles" :type="'video'" :src="src"/>
         </div>
 
+        <div v-if="(['glb','gltf','vrm','fbx','obj','stl'].includes(typeDoc)) && preview" class="AlexiconDoc-3D">
+            <ModelViewer :modelUrl="src"/>
+        </div>
+
     </div>
 </template>
 
@@ -56,13 +60,15 @@ import mammoth from "mammoth";
 import * as XLSX from 'xlsx';
 import AlexiconCode from "./AlexiconCode.vue";
 import AlexiconMedia from "./AlexiconMedia.vue";
-import { Eye, Download, File, FileText, Sheet, CaseSensitive, FileCode, Video, Music, CodeXml, Braces, Terminal } from 'lucide-vue-next';
+import { Eye, Download, File, FileText, Sheet, CaseSensitive, FileCode, Video, Music, CodeXml, Braces, Terminal, Box } from 'lucide-vue-next';
+import ModelViewer from "./ModelViewer.vue";
 
 export default {
     name: 'AlexiconDoc',
     components:{
         AlexiconCode,
         AlexiconMedia,
+        ModelViewer,
         Eye, Download, File
     },
     props:{
@@ -82,7 +88,7 @@ export default {
             keyUpdater: 0,
             openingAsPlain: openingAsPlain,
             previewAvailableFormats: [
-                "pdf", "docx", "xls", "xlsx", "ttf", "otf", "woff", "html", "htm", "mp4", "webm", "ogg",
+                "pdf", "docx", "xls", "xlsx", "ttf", "otf", "woff", "html", "htm", "mp4", "webm", "ogg", "glb", "gltf", "vrm", "fbx", "obj", "stl",
                 ...openingAsPlain
             ],
             docData: {},
@@ -165,13 +171,17 @@ export default {
         },
     },
     mounted() {
-        if(typeof this.val == "string") {
+        if (typeof this.val === "string") {
             this.src = this.val;
-            this.typeDoc = this.doc?.toLowerCase() || this.src.split('.').pop().toLowerCase();
+            const base = this.src.split('?')[0].split('#')[0];
+            this.typeDoc = this.doc?.toLowerCase?.() || base.split('.').pop().toLowerCase();
             this.docName = this.src.split('/').pop();
         } else {
             this.src = this.val.url;
-            this.typeDoc = this.val.type.split("/")[1];
+            // si viene MIME, úsalo; si no, cae a la extensión de la url
+            const mimeExt = this.val?.type?.split('/')[1]?.toLowerCase?.();
+            const urlExt  = (this.src.split('?')[0].split('#')[0].split('.').pop() || '').toLowerCase();
+            this.typeDoc = mimeExt || urlExt;
             this.docName = this.val.filename;
         }
         
@@ -197,6 +207,12 @@ export default {
             "css": {icon: Braces, render: this.readAsPlain},
             "json": {icon: Braces, render: this.readAsPlain},
             "bat": {icon: Terminal, render: this.readAsPlain},
+            "glb": {icon: Box, render: undefined},
+            "gltf": {icon: Box, render: undefined},
+            "vrm": {icon: Box, render: undefined},
+            "fbx": {icon: Box, render: undefined},
+            "obj": {icon: Box, render: undefined},
+            "stl": {icon: Box, render: undefined},
         };
     }
 }
@@ -323,4 +339,7 @@ p
     >*
         width: 100%
         height: 100%
+
+.AlexiconDoc-3D > *
+    cursor all-scroll
 </style>

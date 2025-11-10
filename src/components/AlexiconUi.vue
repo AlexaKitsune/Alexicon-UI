@@ -68,7 +68,10 @@
 					<AlexiconComponent :type="'doc'" :val="'/examples/asPlain.csv'"/>
 					<br>.<br>
 					<AlexiconComponent :type="'doc'" :val="require('../assets/video-cyberpunk.mp4')"/>
-
+					<br>.<br>
+					<AlexiconComponent :type="'doc'" :val="'/examples/diane_foxington_blender_the_bad_guys_model.glb'"/>
+					<br>.<br>
+					<AlexiconComponent :type="'masonry'" :colsNum="4" :media="['/examples/53枚 11111.jpg', '/examples/164枚 abstracto 1.png', require('../assets/video-cyberpunk.mp4')]"/>
 				</main>
 			</div>
 		</AlexiconComponent>
@@ -408,6 +411,18 @@ katex: $$c = \\pm\\sqrt{a^2 + b^2}$$
 const a = 1;
 console.log("hola");
 \`\`\`
+
+https://open.spotify.com/intl-es/track/2ZwgbSGCn6jThrTQImQKiM?si=e3a627a2c9354a02
+
+https://open.spotify.com/intl-es/album/1VGVJdmvOSRK2w9RKXk18A?si=WlUir0LkRBG-iAzl5LDlpg
+
+https://github.com/AlexaKitsune/Alexicon-UI
+
+https://youtu.be/gwqK83t9cYM?si=Bfi-KVSSLB5TjJZQ
+
+Otro link
+
+https://www.youtube.com/watch?v=M66U_DuMCS8
 
 Ready to start writing?  Either start changing stuff on the left or
 [clear everything](/demo/?text=) with a simple click.

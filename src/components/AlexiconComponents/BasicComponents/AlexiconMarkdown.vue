@@ -1,9 +1,9 @@
 <template>
     <div class="AlexiconMarkdown-MAIN" v-html="result"></div>
-    <div class="AlexiconMarkdown-spoiler"><label><input type="checkbox"/><div>spoiler text</div></label></div>
 </template>
 
 <script>
+/* eslint-disable */ 
 import { Marked } from 'marked';
 import markedKatex from "marked-katex-extension";
 import { markedHighlight } from "marked-highlight";
@@ -44,14 +44,36 @@ export default {
             this.result = this.postProcessing(html);
         },
 
-        postProcessing(text){
+        postProcessing(text) {
             let result = text.replaceAll(
                 /<blockquote>\s*<p>!(.*?)<\/p>\s*<\/blockquote>/gs,
                 '<div class="AlexiconMarkdown-spoiler"><label><input type="checkbox"/><div>$1</div></label></div>'
             );
 
+            // YouTube / youtu.be
+            result = result.replaceAll(
+                /<p>\s*<a href="https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})[^"]*">[^<]*<\/a>\s*<\/p>/g,
+                '<iframe width="100%" height="360" src="https://www.youtube.com/embed/$1" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+            );
+
+            // Spotify (track / album / playlist / show / episode)
+            // Soporta también prefijos como /intl-es/ u otros locales: /[loquesea]/
+            result = result.replaceAll(
+                /<p>\s*<a href="https?:\/\/open\.spotify\.com\/(?:[^"\/]+\/)?(track|album|playlist|show|episode)\/([A-Za-z0-9]+)[^"]*">[^<]*<\/a>\s*<\/p>/g,
+                (match, type, id) => {
+                const height =
+                    type === 'track' ? 152 :
+                    type === 'episode' ? 232 :
+                    352; // album/playlist/show
+
+                return `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/${type}/${id}" width="100%" height="${height}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+                }
+            );
+
             return result;
         }
+
+
     },
     mounted(){
         this.renderMarkdown();
